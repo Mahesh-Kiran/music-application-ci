@@ -3,25 +3,21 @@ import Navbar from "./Components/Navbar";
 import Home from './Pages/Home';
 import Playlist from "./Pages/Playlist";
 import Songs from "./Pages/Songs";
-import { useState } from "react";
 import {Routes,Route} from "react-router-dom";
+import { MusicProvider } from "./Context Provider/MusicContext";
+
 
 function App(){
-  const [playlist, setPlaylist] = useState([]);
-
-  const addToPlaylist = (song) => {
-    setPlaylist(prev => [...prev, song]);
-  };
-
   return(
     <div>
+    <MusicProvider>
       <Navbar/>
-
       <Routes>
         <Route path="/" element={<Home/>}/>
-        <Route path="/songs" element={ <Songs addToPlaylist={addToPlaylist}/>}/>
-        <Route path="/playlist" element={<Playlist playlist={playlist}/>}/>
+        <Route path="/songs" element={ <Songs />}/>
+        <Route path="/playlist" element={<Playlist />}/>
       </Routes>
+    </MusicProvider>
     </div>
   );
 }

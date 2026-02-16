@@ -5,7 +5,7 @@ import Playlist from "./Pages/Playlist";
 import Songs from "./Pages/Songs";
 import {Routes,Route} from "react-router-dom";
 import { MusicProvider } from "./Context Provider/MusicContext";
-
+import './App.css';
 
 function App(){
   return(

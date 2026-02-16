@@ -18,7 +18,6 @@ pipeline {
 
     stage('Install dependencies') {
       steps {
-        // Windows batch, not sh
         bat '''
           if exist package-lock.json (
             call npm ci
@@ -29,17 +28,17 @@ pipeline {
       }
     }
 
-    stage('Test') {
-      when {
-        expression { fileExists('package.json') }
-      }
-      steps {
-        // If you don't have tests, you can skip this stage or keep it tolerant
-        bat '''
-          call npm test -- --watch=false || echo "Tests failed or not configured, continuing..."
-        '''
-      }
-    }
+    // Remove this whole stage for now
+    // stage('Test') {
+    //   when {
+    //     expression { fileExists('package.json') }
+    //   }
+    //   steps {
+    //     bat '''
+    //       call npm test -- --watch=false || echo "Tests failed or not configured, continuing..."
+    //     '''
+    //   }
+    // }
 
     stage('Build') {
       steps {

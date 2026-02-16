@@ -28,18 +28,6 @@ pipeline {
       }
     }
 
-    // Remove this whole stage for now
-    // stage('Test') {
-    //   when {
-    //     expression { fileExists('package.json') }
-    //   }
-    //   steps {
-    //     bat '''
-    //       call npm test -- --watch=false || echo "Tests failed or not configured, continuing..."
-    //     '''
-    //   }
-    // }
-
     stage('Build') {
       steps {
         bat 'call npm run build'
@@ -47,9 +35,6 @@ pipeline {
     }
 
     stage('Trigger Vercel Deploy') {
-      when {
-        branch 'main'
-      }
       steps {
         echo "Triggering Vercel deployment via Deploy Hook..."
         bat "curl -X POST \"%VERCEL_DEPLOY_HOOK_URL%\""

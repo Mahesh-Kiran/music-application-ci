@@ -1,16 +1,29 @@
-# React + Vite
+# Music Application with CI/CD (React + Jenkins + Vercel)
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This is a simple music application built using React and connected to a CI/CD pipeline using Jenkins. The main purpose of this project is to learn how a frontend application can be automatically built and deployed whenever changes are pushed to GitHub.
 
-Currently, two official plugins are available:
+The application displays a list of songs, allows users to add songs to a playlist, and supports navigation between pages using React Router. Global state is managed using React Context API.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Whenever code is pushed to the repository, Jenkins pulls the latest code, installs dependencies, builds the project, and triggers a Vercel Deploy Hook to deploy the latest version.
 
-## React Compiler
+---
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## Technologies Used
 
-## Expanding the ESLint configuration
+- React  
+- React Router DOM  
+- Context API  
+- HTML, CSS, JavaScript  
+- Jenkins  
+- Node.js & npm  
+- Vercel
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+---
+
+## How It Works
+
+1. Developer pushes code to GitHub  
+2. Jenkins automatically starts the pipeline  
+3. Jenkins installs dependencies and builds the app  
+4. Jenkins triggers Vercel Deploy Hook  
+5. Vercel deploys the new build  
